@@ -1,0 +1,41 @@
+﻿@model UniversityManagementMVCApp.ViewModels.SubjectTeacherViewModel
+
+@{
+    ViewData["Title"] = "DetailsWithTeachers";
+}
+
+<h1>DetailsWithTeachers</h1>
+
+<div>
+    <h4>SubjectTeacherViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<label asp-for="Teachers" class="control-label">Teachers for this subjects</label>
+@foreach (var item in Model.Teachers)
+{
+    <div style="border: 1px solid red;">
+        <p>
+            @Html.DisplayFor(modelItem => item.Name)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.Description)
+        </p>
+    </div>
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

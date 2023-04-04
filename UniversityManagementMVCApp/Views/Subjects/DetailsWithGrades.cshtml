@@ -1,0 +1,38 @@
+﻿@model UniversityManagementMVCApp.ViewModels.SubjectGradeViewModel
+
+@{
+    ViewData["Title"] = "DetailsWithGrades";
+}
+
+<h1>DetailsWithGrades</h1>
+
+<div>
+    <h4>SubjectGradeViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<label asp-for="Grades" class="control-label">Grades for this subjects</label>
+@foreach (var item in Model.Grades)
+{
+    <div style="border: 1px solid red;">
+        <p>
+            @Html.DisplayFor(modelItem => item.Value)
+        </p>
+    </div>
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
