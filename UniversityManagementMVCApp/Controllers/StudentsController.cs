@@ -9,15 +9,24 @@ namespace UniversityManagementMVCApp.Controllers
 	{
 		private readonly StudentsRepository _repository;
 		private readonly GroupsRepository _groupsRepository;
-		public StudentsController(StudentsRepository repository, GroupsRepository groupsRepository)
+		private readonly GradesRepository _gradesRepository;
+
+		public StudentsController(StudentsRepository repository, GroupsRepository groupsRepository, GradesRepository gradesRepository)
 		{
 			_repository = repository;
 			_groupsRepository = groupsRepository;
+			_gradesRepository = gradesRepository;
 		}
 
 		public IActionResult Index()
 		{
 			var students = _repository.GetStudents();
+
+			foreach (var student in students)
+			{
+				student.GradeAverage = _gradesRepository.GetStudentGradeAverage(student.IdStudent);
+			}
+
 			return View("Index", students);
 		}
 

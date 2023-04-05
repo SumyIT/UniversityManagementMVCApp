@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UniversityManagementMVCApp.DataContext;
 using UniversityManagementMVCApp.Models;
+using UniversityManagementMVCApp.ViewModels;
 
 namespace UniversityManagementMVCApp.Repositories
 {
@@ -12,21 +13,21 @@ namespace UniversityManagementMVCApp.Repositories
 			_context = context;
 		}
 
-		public DbSet<GradeModel> GetGrades()  //get all from table
+		public List<GradeModel> GetGrades()  //get all from table
 		{
-			return _context.Grades;
+			return _context.Grades.Include(x => x.Student).Include(x => x.Subject).Include(x => x.GradeType).ToList();
 		}
 
 		public void Add(GradeModel model)
 		{
 			model.IdGrade = Guid.NewGuid(); //setam id-ul
-			_context.Grades.Add(model); //adaugam modelul in layer-ul ORM (ProgrammingClubDataContext)
+			_context.Grades.Add(model); //adaugam modelul in layer-ul ORM (UniversityManagementDataContext)
 			_context.SaveChanges(); //commit to database
 		}
 
-		public GradeModel GetGradeById(Guid id)  //get announcement for a cartain ID -> page Details
+		public GradeModel GetGradeById(Guid id)  //get grade for a cartain ID -> page Details
 		{
-			GradeModel grade = _context.Grades.FirstOrDefault(x => x.IdGrade == id);
+			GradeModel grade = _context.Grades.Include(x => x.Student).Include(x => x.Subject).Include(x => x.GradeType).FirstOrDefault(x => x.IdGrade == id);
 			return grade;
 		}
 
@@ -44,6 +45,25 @@ namespace UniversityManagementMVCApp.Repositories
 				_context.Grades.Remove(grade);
 				_context.SaveChanges();
 			}
+		}
+
+		public decimal GetStudentGradeAverage(Guid studentId)
+		{
+			decimal sum = 0;
+
+			List<GradeModel> grades = _context.Grades.Where(x => x.IdStudent == studentId).ToList();
+			
+			if (grades.Count != 0)
+			{
+				foreach (GradeModel grade in grades)
+				{
+					sum = sum + grade.Value;
+				}
+
+				return sum/grades.Count();
+			}
+
+			return 0;
 		}
 	}
 }

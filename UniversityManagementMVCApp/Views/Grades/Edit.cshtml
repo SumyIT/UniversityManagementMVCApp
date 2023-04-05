@@ -4,36 +4,36 @@
 	ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edit Grade</h1>
 
-<h4>GradeModel</h4>
 <hr />
 <div class="row">
 	<div class="col-md-4">
 		<form asp-action="Edit">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
-				<label asp-for="IdGrade" class="control-label"></label>
+@*				<label asp-for="IdGrade" class="control-label"></label>
 				<input asp-for="IdGrade" class="form-control" readonly="@(true)" />
-				<span asp-validation-for="IdGrade" class="text-danger"></span>
+				<span asp-validation-for="IdGrade" class="text-danger"></span>*@
+				@Html.HiddenFor(m => m.IdGrade)
 			</div>
 			<div class="form-group">
+				<div class="form-group">
+					<label asp-for="IdStudent" class="control-label"></label>
+					@*				<input asp-for="IdStudent" class="form-control" />
+					<span asp-validation-for="IdStudent" class="text-danger"></span>*@
+					@Html.DropDownList("IdStudent", new SelectList(ViewBag.students, "IdStudent", "Name"))
+				</div>
+				<div class="form-group">
+					<label asp-for="IdSubject" class="control-label"></label>
+					@*				<input asp-for="IdSubject" class="form-control" />
+					<span asp-validation-for="IdSubject" class="text-danger"></span>*@
+					@Html.DropDownList("IdSubject", new SelectList(ViewBag.subjects, "IdSubject", "Name"))
+				</div>
 				<label asp-for="IdGradeType" class="control-label"></label>
-@*				<input asp-for="IdGradeType" class="form-control" />
+				@*				<input asp-for="IdGradeType" class="form-control" />
 				<span asp-validation-for="IdGradeType" class="text-danger"></span>*@
 				@Html.DropDownList("IdGradeType", new SelectList(ViewBag.gradeTypes, "IdGradeType", "Name"))
-			</div>
-			<div class="form-group">
-				<label asp-for="IdStudent" class="control-label"></label>
-@*				<input asp-for="IdStudent" class="form-control" />
-				<span asp-validation-for="IdStudent" class="text-danger"></span>*@
-				@Html.DropDownList("IdStudent", new SelectList(ViewBag.students, "IdStudent", "Name"))
-			</div>
-			<div class="form-group">
-				<label asp-for="IdSubject" class="control-label"></label>
-@*				<input asp-for="IdSubject" class="form-control" />
-				<span asp-validation-for="IdSubject" class="text-danger"></span>*@
-				@Html.DropDownList("IdSubject", new SelectList(ViewBag.subjects, "IdSubject", "Name"))
 			</div>
 			<div class="form-group">
 				<label asp-for="Value" class="control-label"></label>
@@ -48,7 +48,7 @@
 </div>
 
 <div>
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to Grades</a>
 </div>
 
 @section Scripts {

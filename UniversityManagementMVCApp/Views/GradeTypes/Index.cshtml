@@ -4,17 +4,17 @@
 	ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Grade Types</h1>
 
 <p>
-	<a asp-action="Create">Create New</a>
+	<a asp-action="Create">Add New Grade Type</a>
 </p>
 <table class="table">
 	<thead>
 		<tr>
-			<th>
+@*			<th>
 				@Html.DisplayNameFor(model => model.IdGradeType)
-			</th>
+			</th>*@
 			<th>
 				@Html.DisplayNameFor(model => model.Name)
 			</th>
@@ -28,9 +28,9 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>
+@*				<td>
 					@Html.DisplayFor(modelItem => item.IdGradeType)
-				</td>
+				</td>*@
 				<td>
 					@Html.DisplayFor(modelItem => item.Name)
 				</td>

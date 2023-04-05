@@ -12,21 +12,21 @@ namespace UniversityManagementMVCApp.Repositories
 			_context = context;
 		}
 
-		public DbSet<TeacherModel> GetTeachers()  //get all from table
+		public List<TeacherModel> GetTeachers()  //get all from table
 		{
-			return _context.Teachers;
+			return _context.Teachers.Include(x => x.Subject).Include(x => x.TeacherType).ToList();
 		}
 
 		public void Add(TeacherModel model)
 		{
 			model.IdTeacher = Guid.NewGuid(); //setam id-ul
-			_context.Teachers.Add(model); //adaugam modelul in layer-ul ORM (ProgrammingClubDataContext)
+			_context.Teachers.Add(model); //adaugam modelul in layer-ul ORM (UniversityManagementDataContext)
 			_context.SaveChanges(); //commit to database
 		}
 
-		public TeacherModel GetTeacherById(Guid id)  //get announcement for a cartain ID -> page Details
+		public TeacherModel GetTeacherById(Guid id)  //get teacher for a cartain ID -> page Details
 		{
-			TeacherModel teacher = _context.Teachers.FirstOrDefault(x => x.IdTeacher == id);
+			TeacherModel teacher = _context.Teachers.Include(x => x.Subject).Include(x => x.TeacherType).FirstOrDefault(x => x.IdTeacher == id);
 			return teacher;
 		}
 

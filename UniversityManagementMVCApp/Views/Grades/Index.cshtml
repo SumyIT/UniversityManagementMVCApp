@@ -4,25 +4,25 @@
 	ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Grades</h1>
 
 <p>
-	<a asp-action="Create">Create New</a>
+	<a asp-action="Create">Add New Grade</a>
 </p>
 <table class="table">
 	<thead>
 		<tr>
-			<th>
+@*			<th>
 				@Html.DisplayNameFor(model => model.IdGrade)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.Student.Name)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.IdGradeType)
+				@Html.DisplayNameFor(model => model.Subject.Name)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.IdStudent)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.IdSubject)
+				@Html.DisplayNameFor(model => model.GradeType.Name)
 			</th>
 			<th>
 				@Html.DisplayNameFor(model => model.Value)
@@ -34,17 +34,17 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>
+@*				<td>
 					@Html.DisplayFor(modelItem => item.IdGrade)
+				</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.Student.Name)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.IdGradeType)
+					@Html.DisplayFor(modelItem => item.Subject.Name)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.IdStudent)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.IdSubject)
+					@Html.DisplayFor(modelItem => item.GradeType.Name)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Value)

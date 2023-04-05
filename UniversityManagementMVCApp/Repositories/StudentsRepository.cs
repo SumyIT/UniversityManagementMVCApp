@@ -13,21 +13,21 @@ namespace UniversityManagementMVCApp.Repositories
 			_context = context;
 		}
 
-		public DbSet<StudentModel> GetStudents()  //get all from table
+		public List<StudentModel> GetStudents()  //get all from table
 		{
-			return _context.Students;
+			return _context.Students.Include(x => x.Group).ToList();
 		}
 
 		public void Add(StudentModel model)
 		{
 			model.IdStudent = Guid.NewGuid(); //setam id-ul
-			_context.Students.Add(model); //adaugam modelul in layer-ul ORM (ProgrammingClubDataContext)
+			_context.Students.Add(model); //adaugam modelul in layer-ul ORM (UniversityManagementDataContext)
 			_context.SaveChanges(); //commit to database
 		}
 
-		public StudentModel GetStudentById(Guid id)  //get announcement for a cartain ID -> page Details
+		public StudentModel GetStudentById(Guid id)  //get student for a cartain ID -> page Details
 		{
-			StudentModel student = _context.Students.FirstOrDefault(x => x.IdStudent == id);
+			StudentModel student = _context.Students.Include(x => x.Group).FirstOrDefault(x => x.IdStudent == id);
 			return student;
 		}
 

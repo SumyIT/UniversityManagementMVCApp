@@ -4,9 +4,8 @@
 	ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Add Student</h1>
 
-<h4>StudentModel</h4>
 <hr />
 <div class="row">
 	<div class="col-md-4">
@@ -17,16 +16,16 @@
 				<input asp-for="IdStudent" class="form-control" />
 				<span asp-validation-for="IdStudent" class="text-danger"></span>
 			</div>*@
+						<div class="form-group">
+				<label asp-for="Name" class="control-label"></label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
 			<div class="form-group">
 				<label asp-for="IdGroup" class="control-label"></label>
 @*				<input asp-for="IdGroup" class="form-control" />
 				<span asp-validation-for="IdGroup" class="text-danger"></span>*@
 				@Html.DropDownList("IdGroup", new SelectList(ViewBag.groups, "IdGroup", "Name"))
-			</div>
-			<div class="form-group">
-				<label asp-for="Name" class="control-label"></label>
-				<input asp-for="Name" class="form-control" />
-				<span asp-validation-for="Name" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Description" class="control-label"></label>
@@ -41,7 +40,7 @@
 </div>
 
 <div>
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to Students</a>
 </div>
 
 @section Scripts {

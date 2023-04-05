@@ -4,29 +4,28 @@
 	ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details for Student</h1>
 
 <div>
-	<h4>StudentModel</h4>
 	<hr />
 	<dl class="row">
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdStudent)
+			@*@Html.DisplayNameFor(model => model.IdStudent)*@
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdStudent)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdGroup)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdGroup)
+			@*@Html.DisplayFor(model => model.IdStudent)*@
 		</dd>
 		<dt class="col-sm-2">
 			@Html.DisplayNameFor(model => model.Name)
 		</dt>
 		<dd class="col-sm-10">
 			@Html.DisplayFor(model => model.Name)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Group.Name)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Group.Name)
 		</dd>
 		<dt class="col-sm-2">
 			@Html.DisplayNameFor(model => model.Description)
@@ -38,5 +37,5 @@
 </div>
 <div>
 	@Html.ActionLink("Edit", "Edit", new { id = Model.IdStudent }) |
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to Students</a>
 </div>

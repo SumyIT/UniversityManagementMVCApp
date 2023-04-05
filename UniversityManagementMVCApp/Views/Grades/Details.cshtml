@@ -4,35 +4,36 @@
 	ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details for Grade</h1>
 
 <div>
-	<h4>GradeModel</h4>
 	<hr />
 	<dl class="row">
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdGrade)
+			@*@Html.DisplayNameFor(model => model.IdGrade)*@
+			@Html.HiddenFor(m => m.IdGrade)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdGrade)
+			@*@Html.DisplayFor(model => model.IdGrade)*@
+			@Html.HiddenFor(m => m.IdGrade)
 		</dd>
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdGradeType)
+			@Html.DisplayNameFor(model => model.Student.Name)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdGradeType)
+			@Html.DisplayFor(model => model.Student.Name)
 		</dd>
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdStudent)
+			@Html.DisplayNameFor(model => model.Subject.Name)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdStudent)
+			@Html.DisplayFor(model => model.Subject.Name)
 		</dd>
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdSubject)
+			@Html.DisplayNameFor(model => model.GradeType.Name)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdSubject)
+			@Html.DisplayFor(model => model.GradeType.Name)
 		</dd>
 		<dt class="col-sm-2">
 			@Html.DisplayNameFor(model => model.Value)
@@ -44,5 +45,5 @@
 </div>
 <div>
 	@Html.ActionLink("Edit", "Edit", new { id = Model.IdGrade }) |
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to Grades</a>
 </div>

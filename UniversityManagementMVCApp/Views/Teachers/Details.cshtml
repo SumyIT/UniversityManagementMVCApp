@@ -4,23 +4,26 @@
 	ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details for Teacher</h1>
 
 <div>
-	<h4>TeacherModel</h4>
 	<hr />
 	<dl class="row">
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdTeacher)
+			@*@Html.DisplayNameFor(model => model.IdTeacher)*@
+			@Html.HiddenFor(m => m.IdTeacher)
+
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdTeacher)
+			@*@Html.DisplayFor(model => model.IdTeacher)*@
+			@Html.HiddenFor(m => m.IdTeacher)
+
 		</dd>
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.IdTeacherType)
+			@Html.DisplayNameFor(model => model.Name)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.IdTeacherType)
+			@Html.DisplayFor(model => model.Name)
 		</dd>
 		<dt class="col-sm-2">
 			@Html.DisplayNameFor(model => model.IdSubject)
@@ -29,10 +32,10 @@
 			@Html.DisplayFor(model => model.IdSubject)
 		</dd>
 		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Name)
+			@Html.DisplayNameFor(model => model.IdTeacherType)
 		</dt>
 		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Name)
+			@Html.DisplayFor(model => model.IdTeacherType)
 		</dd>
 		<dt class="col-sm-2">
 			@Html.DisplayNameFor(model => model.Description)
@@ -44,5 +47,5 @@
 </div>
 <div>
 	@Html.ActionLink("Edit", "Edit", new { id = Model.IdTeacher }) |
-	<a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to Teachers</a>
 </div>
